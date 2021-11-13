@@ -1,71 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>È¸¿ø°¡ÀÔ È­¸é</title>
+    <title>íšŒì›ê°€ìž… í™”ë©´</title>
     <style>
     div{padding-left: 800px;}
-    body{background-color : LemonChiffon}
     </style>    
-    
+
     <link href='../../css/join_style.css' rel='stylesheet' style='text/css'/>
- 
+
     <script type="text/javascript">
     
-        // ÇÊ¼ö ÀÔ·ÂÁ¤º¸ÀÎ ¾ÆÀÌµð, ºñ¹Ð¹øÈ£°¡ ÀÔ·ÂµÇ¾ú´ÂÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+        // í•„ìˆ˜ ìž…ë ¥ì •ë³´ì¸ ì•„ì´ë””, ë¹„ë°€ë²ˆí˜¸ê°€ ìž…ë ¥ë˜ì—ˆëŠ”ì§€ í™•ì¸í•˜ëŠ” í•¨ìˆ˜
         function checkValue()
         {
             if(!document.userInfo.id.value){
-                alert("¾ÆÀÌµð¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+                alert("ì•„ì´ë””ë¥¼ ìž…ë ¥í•˜ì„¸ìš”.");
                 return false;
             }
             
             if(!document.userInfo.password.value){
-                alert("ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+                alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•˜ì„¸ìš”.");
                 return false;
             }
             
-            // ºñ¹Ð¹øÈ£¿Í ºñ¹Ð¹øÈ£ È®ÀÎ¿¡ ÀÔ·ÂµÈ °ªÀÌ µ¿ÀÏÇÑÁö È®ÀÎ
+            // ë¹„ë°€ë²ˆí˜¸ì™€ ë¹„ë°€ë²ˆí˜¸ í™•ì¸ì— ìž…ë ¥ëœ ê°’ì´ ë™ì¼í•œì§€ í™•ì¸
             if(document.userInfo.password.value != document.userInfo.passwordcheck.value ){
-                alert("ºñ¹Ð¹øÈ£¸¦ µ¿ÀÏÇÏ°Ô ÀÔ·ÂÇÏ¼¼¿ä.");
+                alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ë™ì¼í•˜ê²Œ ìž…ë ¥í•˜ì„¸ìš”.");
                 return false;
             }
-        }
-        
-        // Ãë¼Ò ¹öÆ° Å¬¸¯½Ã ·Î±×ÀÎ È­¸éÀ¸·Î ÀÌµ¿
-        function goLoginForm() {
-            location.href="LoginForm.jsp";
-        }
+        }      
     </script>
 </head>
 <body>
     <div id="wrap">
         <br>
-        <b><font size="6" color="black">È¸¿ø°¡ÀÔ</font></b>
+        <b><font size="6" color="black">íšŒì›ê°€ìž…</font></b>
         <br><br>
-        
+
         <form method="post" action="../pro/JoinPro.jsp">
             <table>
                 <tr>
-                    <td id="title">¾ÆÀÌµð</td>
+                    <td id="title">ì•„ì´ë””</td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" name="id"  size="30" placeholder="¾ÆÀÌµð ÀÔ·Â(5~11±ÛÀÚ)" maxlength="20">
-                        <input type="button" value="Áßº¹È®ÀÎ" >    
+                        <input type="text" name="id"  size="30" placeholder="ì•„ì´ë”” ìž…ë ¥(5~11ê¸€ìž)" maxlength="20">
+                        <input type="button" value="ì¤‘ë³µí™•ì¸" >    
                     </td>
                 </tr>
-                        
+
                 <tr>
-                    <td id="title">ºñ¹Ð¹øÈ£</td>
+                    <td id="title">ë¹„ë°€ë²ˆí˜¸</td>
                   </tr>
                 <tr>
                     <td>
-                        <input type="password" name="password" size="40" placeholder="ºñ¹Ð¹øÈ£(¼ýÀÚ,¿µ¹®,Æ¯¼ö¹®ÀÚ Æ÷ÇÔ ÃÖ¼Ò 8ÀÚ)" maxlength="15">
+                        <input type="password" name="password" size="40" placeholder="ë¹„ë°€ë²ˆí˜¸(ìˆ«ìž,ì˜ë¬¸,íŠ¹ìˆ˜ë¬¸ìž í¬í•¨ ìµœì†Œ 8ìž)" maxlength="15">
                     </td>
                 </tr>
-                
+
                 <tr>
                 </tr>
                 <tr>
@@ -73,24 +67,24 @@
                         <input type="password" name="password" size="40" maxlength="15">
                     </td>
                 </tr>
-                    
+
                 <tr>
-                    <td id="title">ÀÌ¸§</td>
+                    <td id="title">ì´ë¦„</td>
                 </tr>
                 <tr>
                     <td>
                         <input type="text" name="name" size="40" maxlength="40">
                     </td>
                 </tr>
-                    
+
                  <tr>
-                    <td id="title">»ýÀÏ</td>
+                    <td id="title">ìƒì¼</td>
                 </tr>
                 <tr>
                     <td>
-                         <input type="text" name="birthyy" maxlength="4" placeholder="³â(4ÀÚ)" size="6" >
+                         <input type="text" name="birthyy" maxlength="4" placeholder="ë…„(4ìž)" size="6" >
                         <select name="birthmm">
-                            <option value="">¿ù</option>
+                            <option value="">ì›”</option>
                             <option value="01" >1</option>
                             <option value="02" >2</option>
                             <option value="03" >3</option>
@@ -104,23 +98,23 @@
                             <option value="11" >11</option>
                             <option value="12" >12</option>
                         </select>
-                        <input type="text" name="birthdd" maxlength="2" placeholder="ÀÏ" size="4" >
+                        <input type="text" name="birthdd" maxlength="2" placeholder="ì¼" size="4" >
                     </td>
 
                 </tr>
-                
+
                  <tr>
-                    <td id="title">¼ºº°</td>
+                    <td id="title">ì„±ë³„</td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="radio" name="gender" value="³²" checked>³²
-                        <input type="radio" name="gender" value="¿©" >¿©
+                        <input type="radio" name="gender" value="ë‚¨" checked>ë‚¨
+                        <input type="radio" name="gender" value="ì—¬" >ì—¬
                     </td>
                 </tr>                 
-                                   
+
                 <tr>
-                    <td id="title">ÀÌ¸ÞÀÏ</td>
+                    <td id="title">ì´ë©”ì¼</td>
                 </tr>
                 <tr>
                     <td>
@@ -133,9 +127,9 @@
                         </select>
                     </td>
                 </tr>
-                    
+
                 <tr>
-                    <td id="title">ÀüÈ­¹øÈ£</td>
+                    <td id="title">ì „í™”ë²ˆí˜¸</td>
                 </tr>
                 <tr>
                     <td>
@@ -143,7 +137,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td id="title">ÁÖ¼Ò</td>
+                    <td id="title">ì£¼ì†Œ</td>
                 </tr>
                 <tr>
                     <td>
@@ -152,9 +146,9 @@
                 </tr>
             </table>            
             <br>            
-            <input type="submit" value="°¡ÀÔ"/>  
-            <input type="button" value="Ãë¼Ò">
+            <input type="submit" value="ê°€ìž…"/>  
+            <input type="button" value="ì·¨ì†Œ" onclick="javascript:window.location='../login/LoginForm.jsp'">
         </form>
     </div>
 </body>
-</html>
+</html> 
