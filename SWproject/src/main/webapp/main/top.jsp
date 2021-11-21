@@ -5,9 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../design.css" rel="stylesheet" type="text/css">
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <style>
+.top{
+	position:relative;
+}
 #menu {
 	border-top:1px solid black;
 	border-bottom:1px solid black;
@@ -75,6 +77,10 @@
 	overflow:visible;
 	padding:0;
 }
+#nav ul li:hover a{
+	background:#eee;
+	font-weight:bold;
+}
 /*제일윗부분*/
 .wrapper{
 	margin : 0 auto;
@@ -84,7 +90,7 @@
 	color : darkgray;
 }
 .top {
-position:realative;
+position:fixed;
 left:0;
 padding:0;
 width:100%;
@@ -127,32 +133,36 @@ padding-top:7px;
 		<li class="test"><a href="../login/LoginForm.jsp"><p>로그인</p></a></li>	
 	</ul>
 	</div>
-</div>
+</div><br><br>
 <div>
 <!-- <div id=login style="float:right;">
 	<span style="color:gray;" onclick="location.href='../login/LoginForm.jsp'">로그인 |</span>
 	<span style="color:gray;" onclick="location.href='../login/IdSearch.jsp'"> 회원가입</span>
 </div> -->
-	<header>
-	<h3>#화음 <input type="text" value="" placeholder="serach">
+	<header style="padding-top:6px;">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<h2 onclick="location.href='../main/main.jsp'">#화음 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="text" size="40" value="" placeholder="serach">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<span onclick="location.href='../login/IdSearch.jsp'"><i class="fas fa-shopping-cart"></i></span>
-	<span onclick="location.href='../login/IdSearch.jsp'"><i class="fas fa-user"></i></span>
+	&nbsp;&nbsp;
+	<span onclick="../login/IdSearch.jsp'"><i class="fas fa-user"></i></span>
 	</header>
-
+	<br>
 
 	<ul id="nav">
-	<!-- <li><a href="#">카테고리+</a>
+	<li><a href="#">카테고리+</a>
 		<ul>
 			<li><a href="#">기초 스킨케어</a></li>
 			<li><a href="#">메이크업</a></li>
 			<li><a href="#">바디케어</a></li>
 			<li><a href="#">미용소품</a></li>
 		</ul>
-	</li> -->
+	</li>
 	<li><a href="#">랭킹</a></li>
 	<li><a href="#">신상</a></li>
 	<li><a href="#">이벤트</a></li>
-	<li><a href="#">게시판</a></li>
+	<li><a href="../board/QnAboard.jsp">게시판</a></li>
 	</ul>
 </div>
 </center>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="Member.MemberBean" %>
-<%@page import="Member.MemberDAO" %>
+<%@page import="jsp.member.model.MemberBean" %>
+<%@page import="jsp.member.model.MemberDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <%-- 자바빈 관련 액션태그 사용 --%>
-<jsp:useBean id="memberBean" class="Member.MemberBean" />
+<jsp:useBean id="memberBean" class="jsp.member.model.MemberBean" />
 <jsp:setProperty property="*" name="memberBean"/> 
  
 <%

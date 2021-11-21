@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="bbs.Bbs"%>
+<%@ page import="bbs.Bbs" %>
 <%@ page import="bbs.BbsDAO"%>
 <%@ page import="java.io.PrintWriter"%>
 <%
@@ -9,17 +9,12 @@
 %>
 
 <!-- 한명의 회원정보를 담는 user클래스를 자바 빈즈로 사용, scope:페이지 현재의 페이지에서만 사용-->
-<jsp:userBean id="bbs" class="ShoppintMall.bbs.Bbs" scope="page" />
-<% Bbs bbs = new Bbs(); %>
 
 <jsp:useBean id="bbs" class="bbs.Bbs" scope="page" />
-<!-- //Bbs bbs = new Bbs(); -->
-<jsp:setProperty name = "bbs" property="bbsTitle" /><!-- bbs.setBbsTitle(requrst) -->
+<jsp:setProperty name = "bbs" property="bbsTitle" />
 <jsp:setProperty name = "bbs" property="bbsContent" />
-<jsp:setProperty name = "bbs" property="imageFile" />
 <jsp:setProperty name = "bbs" property="bbsImageFile" />
 
-<!--< % System.out.println(bbs); %> -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +33,7 @@
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('로그인을 하세요.')"); //'로그인 하세요.' 경고창 띄우기
-		script.println("location.href='login.jsp"); //로그인 화면으로 이동, 로그인jsp
+		script.println("location.href='../login/LoginForm.jsp'"); //로그인 화면으로 이동, 로그인jsp
 		script.println("</script>");
 		script.close();
 	}else { //로그인한 경우 

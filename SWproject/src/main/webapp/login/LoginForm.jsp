@@ -4,13 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>#화음-로그인</title>
 <link href="../design.css" rel="stylesheet" type="text/css">
+<style>
+#wrap {
+	padding-left: 700px;
+}
+</style>
 </head>
 <%-- <%
 String saveok=(String)session.getAttribute("saveok");
 String id=(String)session.getAttribute("idok");
 %> --%>
+
 <script type="text/javascript">
 	function loginCheck() {
 		if(document.loginform.id.value =="") {
@@ -27,8 +33,9 @@ String id=(String)session.getAttribute("idok");
 	}
 </script>
 <body>
-<jsp:include page ="../main/top.jsp" flush="false"/>
-<form name="loginform" action="loginAction.jsp" method="post">
+<%@ include file="../main/top.jsp" %>
+<form name="loginform" action="LoginAction.jsp" method="post">
+<div id="wrap">
 	<table>
 		<!-- <caption>로그인</caption> -->
 		<tr><td align="center"><h2>로 그 인</h2></td></tr>
@@ -55,8 +62,10 @@ String id=(String)session.getAttribute("idok");
 		<span onclick="location.href='../join/JoinForm.jsp'">회원가입</span></td></tr>
 		<tr><td><hr></td></tr>
 		<tr><td>
-		<button type="button" size="40" class="nonbtn" onClick="location.href='Non_Member.jsp'">비회원 주문조회</button></td></tr>
-	</table></form>
+		<button type="button" style="size: 40" class="nonbtn" onClick="location.href='NonMember.jsp'">비회원 주문조회</button></td></tr>
+	</table>
+</div>
+</form>
 	<%
 		String msg=request.getParameter("msg");
 		if(msg!=null && msg.equals("0")) {
@@ -72,5 +81,6 @@ String id=(String)session.getAttribute("idok");
 			history.back();
 			</script>
 		<%}	%>
+
 </body>
 </html>

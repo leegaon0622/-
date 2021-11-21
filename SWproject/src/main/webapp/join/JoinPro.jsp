@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="Member.MemberBean" %>
+<%@page import="jsp.member.model.MemberBean" %>
+<%@page import="jsp.member.model.MemberDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원가입 처리내용</title>
 <style>
-div{padding-left: 800px;}
+#wrap{padding-left: 700px;}
 </style>
 </head>
 <body>
@@ -15,9 +16,15 @@ div{padding-left: 800px;}
  // 한글 깨짐을 방지하기 위한 인코딩 처리
  request.setCharacterEncoding("UTF-8"); 
 %>
-<jsp:useBean id="memberBean" class="Member.MemberBean" />
+<jsp:useBean id="memberBean" class="jsp.member.model.MemberBean" />
 <jsp:setProperty property="*" name="memberBean"/>
  
+<%
+	MemberDAO dao = MemberDAO.getInstance();
+	dao.insertMember(memberBean);
+%>
+ 
+<%@ include file="../main/top.jsp" %> 
 <div id="wrap">
 <br><b><font size="5" color="gray">회원가입 정보를 확인하세요.</font></b>
 <br><br>

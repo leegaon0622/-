@@ -5,7 +5,7 @@
 <head>
     <title>회원가입 화면</title>
     <style>
-    div{padding-left: 800px;}
+    #wrap{padding-left: 700px;}
     </style>    
 
     <link href='../../css/join_style.css' rel='stylesheet' style='text/css'/>
@@ -34,12 +34,13 @@
     </script>
 </head>
 <body>
+<%@ include file="../main/top.jsp" %>
     <div id="wrap">
         <br>
         <b><font size="6" color="black">회원가입</font></b>
         <br><br>
 
-        <form method="post" action="../pro/JoinPro.jsp">
+        <form method="post" action="JoinPro.jsp">
             <table>
                 <tr>
                     <td id="title">아이디</td>
@@ -118,13 +119,15 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" name="mail1" size="20" maxlength="30"> @
-                        <select name="mail2">
-                            <option>naver.com</option>
-                            <option>daum.net</option>
-                            <option>gmail.com</option>
-                            <option>nate.com</option>                        
-                        </select>
+                        <input type="text" name="mail1" size="15" maxlength="30"> 
+                         <span>@</span>
+                        <input name="mail2" list="domains" size="15" placeholder="도메인입력/선택">
+                     <datalist id="domains">
+                         <option value="naver.com">
+                         <option value="daum.net">
+                         <option value="gmail.com">
+                         <option value="yahoo.co.kr">
+                     </datalist>
                     </td>
                 </tr>
 
@@ -147,8 +150,9 @@
             </table>            
             <br>            
             <input type="submit" value="가입"/>  
-            <input type="button" value="취소" onclick="javascript:window.location='../login/LoginForm.jsp'">
+            <input type="button" value="취소" onClick="history.back()">
         </form>
     </div>
 </body>
 </html> 
+© 2021 G

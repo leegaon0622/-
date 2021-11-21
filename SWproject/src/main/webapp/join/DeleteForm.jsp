@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>탈퇴 화면</title>
-</head>
-<body>
 <style>
 	div{padding-left: 800px;}
 </style>
+</head>
+<body>
 <script type="text/javascript">
  	// 비밀번호 미입력시 경고창
  	function checkValue(){
