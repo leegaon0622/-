@@ -28,19 +28,7 @@
 
 		//정해진 초마다 함수 실행
 		rollingId = setInterval(function() { rollingStart(); }, 4000);//다음 이미지로 롤링 애니메이션 할 시간차
-
-		//마우스 오버시 롤링을 멈춘다.
-		banner.mouseover(function(){
-			//중지
-			clearInterval(rollingId);
-			$(this).css("cursor", "pointer");
-		});
-		//마우스 아웃되면 다시 시작
-		banner.mouseout(function(){
-			rollingId = setInterval(function() { rollingStart(); }, 3000);
-			$(this).css("cursor", "default");
-		});
-		
+				
 		function rollingStart() {
 			$banner.css("width", $bannerWidth * $bannerLength + "px");
 			$banner.css("height", $bannerHeight + "px");

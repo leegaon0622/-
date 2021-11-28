@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="jsp.member.model.MemberBean" %>
-<%@page import="jsp.member.model.MemberDAO" %>
+<%@page import="Member.MemberBean" %>
+<%@page import="Member.MemberDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +9,12 @@
 <title>회원 삭제 처리</title>
 <style>
  div{padding-left: 800px;}
+ body{background-color : LemonChiffon}
 </style>
 </head>
 <body>
 <%
+request.setCharacterEncoding("UTF-8");
  	String id= (String)session.getAttribute("sessionID"); 
  	String pw = request.getParameter("password");
  
@@ -29,7 +31,7 @@
 <br><br><br>
  
 <input type="button" value="확인"
-onclick="javascript:window.location='MainForm.jsp'">
+onclick="javascript:window.location='../main/main.jsp'">
  
 <% // 비밀번호가 틀릴경우 - 삭제가 안되었을 경우
 	}else{

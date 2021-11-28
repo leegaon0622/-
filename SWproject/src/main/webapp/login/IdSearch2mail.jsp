@@ -2,16 +2,19 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<style>
-#mail {
-	padding-left: 50px;
-}
-</style>
 <head>
 <meta charset="UTF-8">
-<title>#화음-아이디찾기</title>
-<link href="../design.css" rel="stylesheet" type="text/css">
+<title>Insert title here</title>
 </head>
+<style>
+table {
+	position:absolute;
+  	padding : 150px 477.4px;
+}
+button {
+	width:100%;
+}
+</style>
 <script type="text/javascript">
 	function nullCheck() {
 		if(document.idSearch.name.value =="") {
@@ -24,13 +27,14 @@
 			document.idSearch.email.focus();
 			return;
 		}
+		document.idSearch.method="post";
 		document.idSearch.submit();
 	}
 </script>
 <body>
-<%@ include file="../main/top.jsp" %>
+<jsp:include page ="../main/top.jsp" flush="false"/>
 <form name="idSearch" action="idSearchAction.jsp" method="post">
-	<table id="mail">
+	<table>
 		<!-- <caption>로그인</caption> -->
 		<tr><td align="center"><h2>아이디 찾기</h2></td></tr>
 		<tr><td align="center">

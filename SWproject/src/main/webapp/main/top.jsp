@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <style>
-.top{
-	position:relative;
-}
 #menu {
 	border-top:1px solid black;
 	border-bottom:1px solid black;
@@ -90,7 +87,7 @@
 	color : darkgray;
 }
 .top {
-position:fixed;
+position:relative;
 left:0;
 padding:0;
 width:100%;
@@ -122,31 +119,60 @@ padding-top:7px;
 .top-menu .test:hover p {
 	color : darkgray;
 }
+b{
+	font-size:40px;
+}
 </style>
 </head>
+<script type="text/javascript">
+	function aaa() {
+		alert("로그인 해주세요!!")
+		location.href="../login/LoginForm.jsp"
+	}
+</script>
 <body>
 <center>
 <div class="top">
 	<div class="wrapper">
 	<ul class = "top-menu">
+	<%
+		Object userId = session.getAttribute("sessionID");
+		if(userId == null) {
+	%>
 		<li class="test"><a href="../join/JoinForm.jsp"><p>회원가입</p></a></li>	
 		<li class="test"><a href="../login/LoginForm.jsp"><p>로그인</p></a></li>	
+	<%} else { %>
+		<li class="test"><a href="../join/UserInfoForm.jsp"><p>마이페이지</p></a></li>	
+		<li class="test"><a href="../login/logoutAction.jsp"><p>로그아웃</p></a></li>	
+		<li class="test"><p><b><%=session.getAttribute("sessionID") %>님 환영합니다!</b></p></li>
+	<%} %>
 	</ul>
 	</div>
-</div><br><br>
+</div>
 <div>
 <!-- <div id=login style="float:right;">
 	<span style="color:gray;" onclick="location.href='../login/LoginForm.jsp'">로그인 |</span>
 	<span style="color:gray;" onclick="location.href='../login/IdSearch.jsp'"> 회원가입</span>
 </div> -->
 	<header style="padding-top:6px;">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<h2 onclick="location.href='../main/main.jsp'">#화음 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="text" size="40" value="" placeholder="serach">
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<b onclick="location.href='../main/main.jsp'">#화음</b>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="text" size="50" value="" placeholder="serach">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<span onclick="location.href='../login/IdSearch.jsp'"><i class="fas fa-shopping-cart"></i></span>
 	&nbsp;&nbsp;
-	<span onclick="../login/IdSearch.jsp'"><i class="fas fa-user"></i></span>
+	<%if(userId==null) {%>
+	<span onclick="aaa()"><i class="fas fa-user"></i></span>
+	<%} else { %>
+	<span onclick="location.href='../join/UserInfoForm.jsp'"><i class="fas fa-user"></i></span>
+	<%} %>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br>
 	</header>
 	<br>
 

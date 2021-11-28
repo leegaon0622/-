@@ -1,37 +1,35 @@
-<!-- 문의 게시판 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의 게시판</title>
+<title>Insert title here</title>
 <head>
 <style>
 .out {
 width:800px;
-height:470px;
+height:800px;
 margin:0 auto;
 position: relative;
 }
 .in {
 width:800px;
-height:360px;
+height:600px;
 top: 50%;
 left:50%
 transform:translate(-50%, -50%);
 }
 </style>
 <body>
+<%@ include file="../main/top.jsp" %>
 <%
 	//로그인한 사람이면 userID라는 변수에 해당 아이디가 저장되고 그렇지 않으면 null값.
 	String userID = null;
-	if(session.getAttribute("userID") != null) {
-		userID = (String)session.getAttribute("userID");
+	if(session.getAttribute("sessionID") != null) {
+		userID = (String)session.getAttribute("sessionID");
 	}
 %>
-
-<jsp:include page ="../main/top.jsp" flush="false"/>
 <div class="out">
 	<div class="in">
 		<div style="background-color: #f0f0f0; height: 100px; width: 800px; line-height: 100px; text-align: center; border-bottom: solid 3px #808080;">
@@ -52,8 +50,8 @@ transform:translate(-50%, -50%);
 				<input type="file" name="bbsImageFile" accept="image/*" onchange="" style="margin:0px 50px;">
 			</div>
 			<hr>
-			<div id="twobutton" style="width:800px; text-align:center;">
-				<input type="submit" value="등록" style="display:inline;">&nbsp;&nbsp;<button type="button" onClick="location.href='boardBack.jsp'">취소</button>
+			<div style="width:800px; text-align:center;">
+				<input type="submit" value="등록" style="display:inline;">&nbsp;&nbsp;<button type="button" onClick="location.href='boardBack.jsp'" >취소</button>
 			</div>
 		</form>
 	</div>
@@ -64,16 +62,12 @@ transform:translate(-50%, -50%);
 	//if(userID == null) {
 		//창 나오는걸로 하면 될듯.
 %>
-<script>
-//alert('로그인하세요');
-//location.href='login.jsp'
-</script>
+
+<!-- <button onclick="if(confirm('로그인 하세요'))location.href='login/LoginForm.jsp';" type="button">글쓰기</button> -->
 <%
 	//} 
 %>
+<%@include file = "../main/footer.jsp" %>
 </div>
-
-
-<%@ include file = "../main/footer.jsp" %>
 </body>
 </html>

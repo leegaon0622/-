@@ -4,11 +4,11 @@
     pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
-String id=request.getParameter("id");
-String name=request.getParameter("name"); 
-String email=request.getParameter("email"); 
+String name=request.getParameter("name");
+String birth=request.getParameter("birth"); 
+String number=request.getParameter("tel"); 
 LoginDAO dao=new LoginDAO();
-String pwd = dao.pwdSearch(id,name,email);
+String id = dao.idSearchPhone(name,birth,number);
 %>    
 <!DOCTYPE html>
 <html>
@@ -25,18 +25,19 @@ table {
 </head>
 <body>
 <jsp:include page ="../main/top.jsp" flush="false"/>
-<%if(pwd!=null) {%>
+<%if(id!=null) {%>
 <form name="idSearch">
 	<table>
 		<tr><td align="center"><h2>아이디 찾기</h2></td></tr>
 		<tr>
-		<td align="center"><%=id %>님의 비밀번호는 <%=pwd %> 입니다.		
+		<td align="center">회원님의 아이디는 <%=id %> 입니다.		
 		</td></tr>
 		
 		<tr><td><hr></td></tr>
 		<tr>
 		<td align="center">
-		<span onclick="location.href='LoginForm.jsp'">로그인 하기</span>
+		<span onclick="location.href='LoginForm.jsp'">로그인 하기</span> | 
+		<span onclick="location.href='PasswdSearch.jsp'">비밀번호 찾기</span>
 		</td></tr>
 	</table>
 </form>

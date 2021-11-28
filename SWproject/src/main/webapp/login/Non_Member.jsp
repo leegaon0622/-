@@ -5,13 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../design.css" rel="stylesheet" type="text/css">
+</head>
 <style>
-#NonMember {
-	padding-left: 50px;
+table {
+	position:absolute;
+  	padding : 150px 477.4px;
+}
+button {
+	width:100%;
 }
 </style>
-</head>
 <script type="text/javascript">
 	function nullCheck() {
 		if(document.nonmemform.name.value =="") {
@@ -27,10 +30,10 @@
 		document.nonmemform.submit();
 	}
 </script>
-<body style="background-color:white">
-<%@ include file="../main/top.jsp" %>
+<body>
+<jsp:include page ="../main/top.jsp" flush="false"/>
 <form name="nonmemform" action="LoginForm.jsp" method="post">
-	<table id="NonMember">
+	<table>
 		<!-- <caption>로그인</caption> -->
 		<tr><td align="center"><h2>비회원 주문조회</h2></td></tr>
 		<tr><td>

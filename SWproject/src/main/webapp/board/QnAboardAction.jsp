@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="bbs.Bbs" %>
+<%@page import="bbs.Bbs" %>
 <%@ page import="bbs.BbsDAO"%>
 <%@ page import="java.io.PrintWriter"%>
 <%
@@ -11,10 +11,12 @@
 <!-- 한명의 회원정보를 담는 user클래스를 자바 빈즈로 사용, scope:페이지 현재의 페이지에서만 사용-->
 
 <jsp:useBean id="bbs" class="bbs.Bbs" scope="page" />
-<jsp:setProperty name = "bbs" property="bbsTitle" />
+<!-- //Bbs bbs = new Bbs(); -->
+<jsp:setProperty name = "bbs" property="bbsTitle" /><!-- bbs.setBbsTitle(requrst) -->
 <jsp:setProperty name = "bbs" property="bbsContent" />
 <jsp:setProperty name = "bbs" property="bbsImageFile" />
 
+<!--< % System.out.println(bbs); %> -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +27,8 @@
 <!-- 글을 작성해주는 액션 페이지 -->
 <%
 	String userID = null;
-	if(session.getAttribute("userID") != null) { //유저아이디이름으로 세션이 존재하는 회원들은 
-		userID = (String)session.getAttribute("userID"); //유저아이디에 해당 세션값을 넣어준다.
+	if(session.getAttribute("sessionID") != null) { //유저아이디이름으로 세션이 존재하는 회원들은 
+		userID = (String)session.getAttribute("sessionID"); //유저아이디에 해당 세션값을 넣어준다.
 	}
 	
 	if(userID == null) { //로그인이 안된 경우

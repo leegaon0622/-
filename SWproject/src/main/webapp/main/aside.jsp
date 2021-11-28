@@ -6,14 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
  body { margin:0; padding:0; }
  a { color:#05f; text-decoration:none; }
  a:hover { text-decoration:underline; }
  
  h1, h2, h3, h4, h5, h6 { margin:0; padding:0; }
  ul, lo, li { margin:0; padding:0; list-style:none; }
-
 #aside { float:left; width:180px; }
  #aside h3 { font-size:22px; margin-bottom:20px; text-align:center; }
 #aside li { font-size:16px; text-align:center; }
@@ -22,7 +20,7 @@
  
 #aside li { position:relative; }
 #aside li:hover { background:#eee; }   
-#aside li > ul.low { display:none; position:absolute; top:0; left:180px;  }
+#aside li > ul.low { display:none; position:absolute; top:0; left:180px;  }
 #aside li:hover > ul.low { display:block; }
 #aside li:hover > ul.low li a { background:#eee; border:1px solid #eee; }
 #aside li:hover > ul.low li a:hover { background:#fff;}
