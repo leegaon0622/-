@@ -12,8 +12,11 @@ table {
 	margin-left: auto; 
 	margin-right: auto;
 }
+#a{height: 550px;}
 </style>
+<header>
 <%@ include file="../main/top.jsp" %>
+</header>
 <body>
 <script type="text/javascript">
  	// 비밀번호 미입력시 경고창
@@ -26,7 +29,7 @@ table {
 </script>
 </body>
 <center>
-<div>
+<div id="a">
 <br>
 <b><font size="6" color="black">내 정보</font></b>
 <br><br>
@@ -46,4 +49,5 @@ onsubmit="return checkValue()">
 </form>
 </div> 
 </center>
+<footer><%@ include file="../main/footer.jsp" %></footer>
 </html>

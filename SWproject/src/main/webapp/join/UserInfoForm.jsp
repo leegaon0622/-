@@ -16,7 +16,7 @@ table {
 }
 </style>
 <body>
-<%@ include file="../main/top.jsp" %>	
+<header><%@ include file="../main/top.jsp" %></header>	
 
 <script type="text/javascript">
  
@@ -112,4 +112,5 @@ request.setCharacterEncoding("UTF-8");
  <input type="button" value="탈퇴" onclick="changeForm(1)">
  <input type="button" value="확인"onclick="changeForm(-1)">
  </center>
+ <footer><%@ include file="../main/footer.jsp" %></footer>
 </html>

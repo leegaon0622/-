@@ -9,7 +9,7 @@
 <style>
 .out {
 width:800px;
-height:800px;
+height:600px;
 margin:0 auto;
 position: relative;
 }
@@ -22,7 +22,9 @@ transform:translate(-50%, -50%);
 }
 </style>
 <body>
+<header>
 <%@ include file="../main/top.jsp" %>
+</header>
 <%
 	//로그인한 사람이면 userID라는 변수에 해당 아이디가 저장되고 그렇지 않으면 null값.
 	String userID = null;
@@ -30,6 +32,7 @@ transform:translate(-50%, -50%);
 		userID = (String)session.getAttribute("sessionID");
 	}
 %>
+<section>
 <div class="out">
 	<div class="in">
 		<div style="background-color: #f0f0f0; height: 100px; width: 800px; line-height: 100px; text-align: center; border-bottom: solid 3px #808080;">
@@ -67,7 +70,8 @@ transform:translate(-50%, -50%);
 <%
 	//} 
 %>
-<%@include file = "../main/footer.jsp" %>
 </div>
+</section>
+<footer><%@ include file="../main/footer.jsp" %></footer>
 </body>
 </html>

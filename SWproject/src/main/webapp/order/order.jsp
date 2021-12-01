@@ -69,6 +69,8 @@
 </style>
 </head>
 <body>
+<header><%@include file="../main/top.jsp" %></header>
+<section>
 	<div class="container">
 		<form action="/order/orderResult" method="post">
 		<c:set value="${productInfo}" var="dto"/>
@@ -177,7 +179,8 @@
 		</div>
 		</form>
 	</div>
-
+</section>
+<footer><%@ include file="../main/footer.jsp" %></footer>
 <script type="text/javascript">
 	
 	$(document).ready(function() {

@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>회원가입 화면</title>
 <style>
-#wrap{padding-left: 500px;}
+#wrap{padding-left: 800px;}
 </style> 
  
 <link href='../../css/join_style.css' rel='stylesheet' style='text/css'/>
@@ -51,7 +51,10 @@ function IDCHECK() {
 </script>
 </head>
 <body>
+<header>
 <%@include file="../main/top.jsp" %>
+</header>
+
 <div id="wrap">
 <br><b><font size="6" color="black">회원가입</font></b>
 <br><br>
@@ -118,5 +121,8 @@ function IDCHECK() {
 <input type="button" value="취소" onclick="javascript:window.location='../login/LoginForm.jsp'">
 </form>
 </div>
+<footer>
+		<%@ include file="../main/footer.jsp" %>
+</footer>
 </body>
 </html>
