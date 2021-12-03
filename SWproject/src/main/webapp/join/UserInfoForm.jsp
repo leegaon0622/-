@@ -16,7 +16,7 @@ table {
 }
 </style>
 <body>
-<header><%@ include file="../main/top.jsp" %></header>	
+<%@ include file="../main/top.jsp" %>	
 
 <script type="text/javascript">
  

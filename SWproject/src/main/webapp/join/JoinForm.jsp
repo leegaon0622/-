@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>회원가입 화면</title>
 <style>
-#wrap{padding-left: 800px;}
+#wrap{padding-left: 900px;}
 </style> 
  
 <link href='../../css/join_style.css' rel='stylesheet' style='text/css'/>
@@ -42,19 +42,10 @@ function IDCheck() {
 	window.open("IdCheckForm.jsp","chkForm",
 				"width=400, height=200, resizable=no, scrollbars=no");
 }
-function IDCHECK() {
-	var id = document.getElementByName("id").value;
-	location.href="IdCheck.jsp?id="+id;
-}
-//아이디 입력창에 값 입력시 hidden에 idUncheck를 세팅
-//-> 중복체크 후 다시 아이디 창에 새로운 아이디를 입력했을 때 다시 중복체크 하도록 하기위해
 </script>
 </head>
 <body>
-<header>
 <%@include file="../main/top.jsp" %>
-</header>
-
 <div id="wrap">
 <br><b><font size="6" color="black">회원가입</font></b>
 <br><br>
@@ -62,7 +53,7 @@ function IDCHECK() {
 <form method="post" action="JoinPro.jsp" name="dlatl">
 <table>
 <tr><td id="title">아이디</td></tr>
-<tr><td><input type="text" name="id" size="30" placeholder="중복확인을 눌러 입력해주세요" maxlength="20" readonly>
+<tr><td><input type="text" name="id" size="30" placeholder="중복확인을 해주세요" maxlength="20" readonly>
 <input type="button" name="idcbtn" value="중복확인" onclick="IDCheck()">
 <input type="hidden" name="idcheck" value="idUncheck"></td></tr>
  
@@ -104,20 +95,26 @@ function IDCHECK() {
 <input type="radio" name="gender" value="여">여</td></tr> 
  
 <tr><td id="title">이메일</td></tr>
-<tr><td><input type="text" name="mail1" size="15" maxlength="30"> 
-<span>@ </span><input name="mail2" list="domains" size="15" placeholder="도메인입력/선택">
-<datalist id="domains"><option value="naver.com">
-                       <option value="daum.net">
-                       <option value="gmail.com">
-                       <option value="yahoo.co.kr"></datalist></td></tr>
- 
+<tr>
+                    <td>
+                        <input type="text" name="mail1" size="15" maxlength="30"> 
+                         <span>@</span>
+                        <input name="mail2" list="domains" size="15" placeholder="도메인입력/선택">
+                     <datalist id="domains">
+                         <option value="naver.com">
+                         <option value="daum.net">
+                         <option value="gmail.com">
+                         <option value="yahoo.co.kr">
+                     </datalist>
+                    </td>
+                </tr>
 <tr><td id="title">전화번호</td></tr>
 <tr><td><input type="text" size="40" name="phone" /></td></tr>
 <tr><td id="title">주소</td></tr>
 <tr><td><input type="text" size="40" name="address"/></td></tr>
 </table> 
 <br> 
-<input type="submit" value="가입"/> 
+<input type="submit" value="가입" onclick="checkValue()"> 
 <input type="button" value="취소" onclick="javascript:window.location='../login/LoginForm.jsp'">
 </form>
 </div>

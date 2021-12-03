@@ -1,11 +1,14 @@
 package Member;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
+
 import javax.naming.NamingException;
 import util.DatabaseUtil;
+
 /**
 * JSP_MEMBER 테이블과 연관된 DAO로
 * 회원 데이터를 처리하는 클래스이다.
@@ -13,6 +16,7 @@ import util.DatabaseUtil;
 * Data Access Object - 테이블 당 한개의 DAO를 작성한다.
 */
 public class MemberDAO {
+
 	private static MemberDAO instance;
 	 
 	 // 싱글톤 패턴
@@ -32,8 +36,9 @@ public class MemberDAO {
 	 String year = member.getBirthyy();
 	 String month = member.getBirthmm();
 	 String day = member.getBirthdd();
+	 int date=Integer.parseInt(day)+1;
 	 
-	 Date birthday = Date.valueOf(year+"-"+month+"-"+day);
+	 Date birthday = Date.valueOf(year+"-"+month+"-"+date);
 	 
 	 return birthday;
 	 
@@ -336,29 +341,30 @@ public class MemberDAO {
 			 }catch(Exception e) {
 				 throw new RuntimeException(e.getMessage());
 			 }
-
+			 
 		 }
 	 }
+	 
 	 public int duplecateID(String id) {
-	       int cnt=0;
-	       Connection conn=null;
-	       PreparedStatement pstm=null;
-	       ResultSet rs=null;
-	       try {
-	          StringBuffer query=new StringBuffer();
-	          query.append("select count(id) as cnt from membertbl where id=?");
-	          conn=DatabaseUtil.getConnection();
-	          pstm=conn.prepareStatement(query.toString());
-	          pstm.setString(1, id);
-	          rs=pstm.executeQuery();
+		 int cnt=0;
+		 Connection conn=null;
+		 PreparedStatement pstm=null;
+		 ResultSet rs=null;
+		 try {
+			 StringBuffer query=new StringBuffer();
+			 query.append("select count(id) as cnt from membertbl where id=?");
+			 conn=DatabaseUtil.getConnection();
+			 pstm=conn.prepareStatement(query.toString());
+			 pstm.setString(1, id);
+			 rs=pstm.executeQuery();
 
-	          if(rs.next()) {
-	             cnt=rs.getInt("cnt");
-	          }
-	          return cnt;
-	       }catch(Exception e) {
-	          System.out.println("아이디 중복 확인 실패 : "+e);
-	       } return -1;
-	    } 
-
+			 if(rs.next()) {
+				 cnt=rs.getInt("cnt");
+			 }
+			 return cnt;
+		 }catch(Exception e) {
+			 System.out.println("아이디 중복 확인 실패 : "+e);
+		 } return -1;
+	 }
+	
 }

@@ -12,7 +12,7 @@ table {
 	margin-left: auto; 
 	margin-right: auto;
 }
-#a{height: 550px;}
+#ab{height: 550px;}
 </style>
 <header>
 <%@ include file="../main/top.jsp" %>
@@ -29,7 +29,7 @@ table {
 </script>
 </body>
 <center>
-<div id="a">
+<div id="ab">
 <br>
 <b><font size="6" color="black">내 정보</font></b>
 <br><br>

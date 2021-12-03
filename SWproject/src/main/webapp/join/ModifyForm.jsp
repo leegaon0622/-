@@ -132,6 +132,7 @@ onclick="javascript:window.location='../main/main.jsp'">
  <input type="submit" value="수정"/> 
  </form>
 </center>
+</body>
 <footer><%@ include file="../main/footer.jsp" %></footer>
 </body>
 </html>

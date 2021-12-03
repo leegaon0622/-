@@ -18,13 +18,14 @@ String id = dao.idSearchPhone(name,birth,number);
 <style>
 table {
 	position:absolute;
-  	padding : 150px 477.4px;
+  	padding : 150px 950px;
 	
 }
 </style>
 </head>
 <body>
 <jsp:include page ="../main/top.jsp" flush="false"/>
+
 <%if(id!=null) {%>
 <form name="idSearch">
 	<table>

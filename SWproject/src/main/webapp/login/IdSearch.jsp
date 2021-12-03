@@ -9,11 +9,13 @@
 <style>
 table {
 	position:absolute;
-  	padding : 150px 477.4px;
+  	padding : 150px 950px;
 }
 button {
 	width:100%;
 }
+#a { height: 550px;
+padding-left: 350px;}
 </style>
 <script type="text/javascript">
 	function nullCheck() {
@@ -63,7 +65,7 @@ button {
 		<tr><td>
 		<input type="text" size="40" name="birth" placeholder="생년월일 6자리"></td></tr>
 		<tr><td>
-		<input type="tel" size="40" name="tel" placeholder="휴대폰 번호 (010포함)"></td></tr>
+		<input type="tel" size="40" name="tel" placeholder="휴대폰 번호 (010포함,-제외)"></td></tr>
 		<tr><td>	
 		<input type="button" style="width:303px" class="button" value="아이디 찾기" onclick="nullCheck()"></td></tr>
 <!-- 		<tr><td>	

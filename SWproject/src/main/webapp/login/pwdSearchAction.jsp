@@ -18,7 +18,7 @@ String pwd = dao.pwdSearch(id,name,email);
 <style>
 table {
 	position:absolute;
-  	padding : 150px 477.4px;
+  	padding : 150px 950px;
 	
 }
 </style>
@@ -28,7 +28,7 @@ table {
 <%if(pwd!=null) {%>
 <form name="idSearch">
 	<table>
-		<tr><td align="center"><h2>아이디 찾기</h2></td></tr>
+		<tr><td align="center"><h2>비밀번호 찾기</h2></td></tr>
 		<tr>
 		<td align="center"><%=id %>님의 비밀번호는 <%=pwd %> 입니다.		
 		</td></tr>

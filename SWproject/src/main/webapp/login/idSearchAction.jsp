@@ -17,8 +17,7 @@ String id = dao.idSearchEmail(name,email);
 <style>
 table {
 	position:absolute;
-  	padding : 150px 477.4px;
-	
+  	padding : 150px 950px;	
 }
 </style>
 </head>

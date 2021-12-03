@@ -9,12 +9,11 @@
 <style>
 table {
 	position:absolute;
-  	padding : 150px 477.4px;
+  	padding : 150px 950px;
 }
 button {
 	width:100%;
 }
-#a{height: 550px; padding-left: 350px;}
 </style>
 </head>
 <script type="text/javascript">
@@ -33,9 +32,8 @@ button {
 	}
 </script>
 <body>
-<header><jsp:include page ="../main/top.jsp" flush="false"/></header>
-<section>
-<div id="a">
+<jsp:include page ="../main/top.jsp" flush="false"/>
+
 <form name="loginform" action="loginAction.jsp" method="post">
 	<table>
 		<tr><td align="center"><h2>로 그 인</h2></td></tr>
@@ -71,8 +69,5 @@ button {
 		<%}	%>
 	</table>
 </form>
-</div>
-</section>
-<footer><%@ include file="../main/footer.jsp" %></footer>	
 </body>
 </html>

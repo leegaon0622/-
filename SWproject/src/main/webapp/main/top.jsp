@@ -119,9 +119,10 @@ padding-top:7px;
 .top-menu .test:hover p {
 	color : darkgray;
 }
-b{
+#a{
 	font-size:40px;
 }
+
 </style>
 </head>
 <script type="text/javascript">
@@ -157,7 +158,7 @@ b{
 	<header style="padding-top:6px;">
 	<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<b onclick="location.href='../main/main.jsp'">#화음</b>
+	<b id="a" onclick="location.href='../main/main.jsp'">#화음</b>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="text" size="50" value="" placeholder="serach">
@@ -188,7 +189,7 @@ b{
 	<li><a href="#">랭킹</a></li>
 	<li><a href="#">신상</a></li>
 	<li><a href="#">이벤트</a></li>
-	<li><a href="../board/QnAboard.jsp">게시판</a></li>
+	<li><a href="../board/QnAboardList.jsp">게시판</a></li>
 	</ul>
 </div>
 </center>

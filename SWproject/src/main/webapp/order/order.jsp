@@ -174,7 +174,7 @@
 			</div>
 			<div>
 				<button class="btn btn-default cal-btn" type="submit">결제하기</button>
-				<button class="btn btn-default back_btn">돌아가기</button>
+				<button class="btn btn-default back_btn" onClick="history.back()">돌아가기</button>
 			</div>
 		</div>
 		</form>
