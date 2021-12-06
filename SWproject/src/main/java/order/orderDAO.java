@@ -1,158 +1,83 @@
 package order;
 
-public class orderDAO {
-	private String orderId;
-	private int order_seq_num;
-	private String productId;
-	private String productName;
-	private int price;
-	private int order_Qty;
-	private String productDist;
-	private String productInfo;
-	private String selected_Opt;
-	private String fullname;
-	private String userid;
-	public String getOrderId() {
-		return orderId;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Vector;
+
+import util.DatabaseUtil;
+
+public class orderDAO{
+	private Connection conn;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	
+	
+	public void insertOrder (order order) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			Connection conn =DatabaseUtil.getConnection(); 
+			PreparedStatement pstmt=conn.prepareStatement(SQL); 
+			sql = "insert tblOrder(id,productNo,quantity,date,state)"
+					+ "values(?,?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, order.getProductId());//주문 id
+			pstmt.setString(2, order.getProductName());//상품 번호
+			pstmt.setInt(3, order.getQuantity());//주문수량
+			pstmt.setString(4, UtilMgr.getDay());
+			//접수중(1), 접수(2), 입금확인(3), 배송준비(4), 배송중(5), 완료(6)
+			pstmt.setString(5, "1");
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return;
 	}
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+
+//Order List : 주문 리스트
+	public Vector<order> getOrderList(String id){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<order> vlist = new Vector<order>();
+		try {
+			con = pool.getConnection();
+			sql = "select * from tblOrder where id=? order by no desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				order order = new order();
+				order.setNo(rs.getInt("no"));//주문번호
+				order.setId(rs.getString("id"));//주문한 사람
+				order.setProductNo(rs.getInt("productNo"));//주문상품번호
+				order.setQuantity(rs.getInt("quantity"));//주문수량
+				order.setDate(rs.getString("date"));//주문날짜
+				order.setState(rs.getString("state"));//주문상태
+				vlist.addElement(order);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
 	}
-	public int getOrder_seq_num() {
-		return order_seq_num;
-	}
-	public void setOrder_seq_num(int order_seq_num) {
-		this.order_seq_num = order_seq_num;
-	}
-	public String getProductId() {
-		return productId;
-	}
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
-	public String getProductName() {
-		return productName;
-	}
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	public int getOrder_Qty() {
-		return order_Qty;
-	}
-	public void setOrder_Qty(int order_Qty) {
-		this.order_Qty = order_Qty;
-	}
-	public String getProductDist() {
-		return productDist;
-	}
-	public void setProductDist(String productDist) {
-		this.productDist = productDist;
-	}
-	public String getProductInfo() {
-		return productInfo;
-	}
-	public void setProductInfo(String productInfo) {
-		this.productInfo = productInfo;
-	}
-	public String getSelected_Opt() {
-		return selected_Opt;
-	}
-	public void setSelected_Opt(String selected_Opt) {
-		this.selected_Opt = selected_Opt;
-	}
-	public String getFullname() {
-		return fullname;
-	}
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
-	}
-	public String getUserid() {
-		return userid;
-	}
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public int getTel() {
-		return tel;
-	}
-	public void setTel(int tel) {
-		this.tel = tel;
-	}
-	public String getUseraddress() {
-		return useraddress;
-	}
-	public void setUseraddress(String useraddress) {
-		this.useraddress = useraddress;
-	}
-	public String getPostcode() {
-		return postcode;
-	}
-	public void setPostcode(String postcode) {
-		this.postcode = postcode;
-	}
-	public String getOrderDate() {
-		return orderDate;
-	}
-	public void setOrderDate(String orderDate) {
-		this.orderDate = orderDate;
-	}
-	public String getDeliver_msg() {
-		return deliver_msg;
-	}
-	public void setDeliver_msg(String deliver_msg) {
-		this.deliver_msg = deliver_msg;
-	}
-	public int getDeliver_situ() {
-		return deliver_situ;
-	}
-	public void setDeliver_situ(int deliver_situ) {
-		this.deliver_situ = deliver_situ;
-	}
-	public int getTotalAmount() {
-		return totalAmount;
-	}
-	public void setTotalAmount(int totalAmount) {
-		this.totalAmount = totalAmount;
-	}
-	public String getBillingDate() {
-		return billingDate;
-	}
-	public void setBillingDate(String billingDate) {
-		this.billingDate = billingDate;
-	}
-	public String getCal_info() {
-		return cal_info;
-	}
-	public void setCal_info(String cal_info) {
-		this.cal_info = cal_info;
-	}
-	private String username;
-	private String email;
-	private int tel;
-	private String useraddress;
-	private String postcode;
-	private String orderDate;
-	private String deliver_msg;
-	private int deliver_situ;
-	private int totalAmount;
-	private String billingDate;
-	private String cal_info;
+
+	//admin mode...
+	//Order All List : 모든 고객의 주문 리스트
+	
+	//Order Detail : 주문 상세정보
+	
+	//Order Update : 주문 상태 수정
+	//접수중(1), 접수(2), 입금확인(3), 배송준비(4), 배송중(5), 완료(6)
+	
+	//Order Delete : 주문삭제
+	
 }

@@ -4,31 +4,32 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
-import product.Product;
 import util.DatabaseUtil;
 
-public class noticeBbsDAO {
+public class reviewBbsDAO {
 		private PreparedStatement pstmt;
-		private Connection conn; 
-		private ResultSet rs; 
+		private Connection conn; //connection은 db에 접근하게 해주는 객체
+		private ResultSet rs; //ResultSet는 쿼리문을 실행한 정보를 가져오는 클래스
 		
 		//게시글 보기: 게시글 번호를 이용하여 게시글을 가져온다.
-		public Bbs getBbs(int bbsID) throws SQLException {
+		public reviewBbs getBbs(int bbsID) throws SQLException {
 			Connection conn = null;
 	        PreparedStatement pstmt = null;
-	        Bbs bbs = null;
-			String sql = "select * from bbs where bbsID = ?"; //해당 상품 찾기 
+	        reviewBbs bbs = null;
+			String sql = "select * from bbs where bbsID = ?"; 
 			try {
 				conn =DatabaseUtil.getConnection();
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, bbsID);
 				rs = pstmt.executeQuery();
 				if(rs.next()){
-					bbs = new Bbs();
+					bbs = new reviewBbs();
 					bbs.setBbsID(rs.getInt("bbsID"));
 					bbs.setBbsTitle(rs.getString("bbsTitle"));
 					bbs.setUserID(rs.getString("userID"));
@@ -37,6 +38,8 @@ public class noticeBbsDAO {
 					bbs.setBbsAvailable(rs.getInt("bbsAvailable"));
 					bbs.setFileName(rs.getString("fileName"));
 					bbs.setFileRealName(rs.getString("fileRealName"));
+					bbs.setFileName2(rs.getString("fileName2"));
+					bbs.setFileRealName2(rs.getString("fileRealName2"));
 				}
 			}catch (SQLException sqle) {
 				throw new RuntimeException(sqle.getMessage());
@@ -54,7 +57,6 @@ public class noticeBbsDAO {
 			return bbs;
 		}
 		
-		//현재 시간 생성
 		public String getDatetime() throws SQLException{
 			try {
 				Date date = new Date();
@@ -68,31 +70,39 @@ public class noticeBbsDAO {
 		}
 		
 		//실제로 글을 작성하는 함수
-		public int write(String bbsTitle, String bbsContent, String fileName, String fileRealName) throws SQLException {
+		public int write(String bbsTitle, String userID, String bbsContent, String fileName, String fileRealName, String fileName2, String fileRealName2) throws SQLException {
 			Connection conn = null;
 	        PreparedStatement pstmt = null;
 			
-			String SQL = "insert into noticebbs(noticeBbsID, noticeBbsTitle, noticeBbsDate, noticeBbsContent, noticeBbsFileName, noticeBbsFileRealName, noticeBbsAvailable) VALUES(?, ?, ?, ?, ?, ?, ?)";
+			String SQL = "insert into bbs(bbsID, bbsTitle, userID, bbsDate, bbsContent, fileName, fileRealName, fileName2, fileRealName2, bbsAvailable) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 			try {
 				conn =DatabaseUtil.getConnection();
 				
 				pstmt = conn.prepareStatement(SQL);
 				
+				//pstmt.setInt(1, getNext());
 				pstmt.setString(1,  null); //null값을 보내 자동으로 부여
 				pstmt.setString(2, bbsTitle);
-				pstmt.setString(3, getDatetime()); //작성일자를 넣음.
-				pstmt.setString(4, bbsContent);
-				pstmt.setString(5, fileName);
-				pstmt.setString(6, fileRealName);
-				pstmt.setInt(7, 1); //글의 유효번호: 1인 경우, 삭제되지 않은 게시물을 의미.
+				pstmt.setString(3, userID);
+				//pstmt.setString(4, getDatetime());
+				pstmt.setString(4, getDatetime()); //작성일자를 넣음.
+				pstmt.setString(5, bbsContent);
+				pstmt.setString(6, fileName);
+				pstmt.setString(7, fileRealName);
+				pstmt.setString(8, fileName2);
+				pstmt.setString(9, fileRealName2);
+				pstmt.setInt(10, 1); //글의 유효번호: 1인 경우, 삭제되지 않은 게시물을 의미.
 				
 				//쿼리 실행
 				return pstmt.executeUpdate(); 
 			}catch (SQLException e) {
+				// 오류시 롤백
+		        //conn.rollback(); 
 				throw new RuntimeException(e.getMessage());
 			}catch (Exception e){
 				System.out.println(e.getMessage());
 			}finally {
+	            // Connection, PreparedStatement를 닫는다.
 	            try{
 	                if ( pstmt != null ){ pstmt.close(); pstmt=null; }
 	                if ( conn != null ){ conn.close(); conn=null;    }
@@ -101,30 +111,32 @@ public class noticeBbsDAO {
 	            }
 			}
 			return -1; //데이터베이스 오류
-		}    
+		}  
 		
-		//공지목록
-		public ArrayList<noticeBbs> getNoticeAll(){
-			ArrayList<noticeBbs> list = new ArrayList<noticeBbs>();
+		public ArrayList<reviewBbs> getBbsAll(){
+			ArrayList<reviewBbs> list = new ArrayList<reviewBbs>();
 			try {
-				String sql = "select * from noticebbs order by noticebbsid desc";
+				String sql = "select * from bbs order by bbsID DESC";
 				conn = DatabaseUtil.getConnection();
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()){
-					noticeBbs notice = new noticeBbs();
-					notice.setNoticeBbsID(rs.getInt("noticeBbsID"));
-					notice.setNoticeBbsTitle(rs.getString("noticeBbsTitle"));
-					notice.setNoticeBbsDate(rs.getString("noticeBbsDate"));
-					notice.setNoticeBbsContent(rs.getString("noticeBbsContent"));
-					notice.setNoticeBbsFileName(rs.getString("noticeBbsFileName"));
-					notice.setNoticeBbsFileRealName(rs.getString("noticeBbsFileRealName"));
-					notice.setNoticeBbsAvailable(rs.getInt("noticeBbsAvailable"));
-					list.add(notice);
+					reviewBbs bbs = new reviewBbs();
+					bbs.setBbsID(rs.getInt("bbsID"));
+					bbs.setBbsTitle(rs.getString("bbsTitle"));
+					bbs.setUserID(rs.getString("userID"));
+					bbs.setBbsDate(rs.getString("bbsDate"));
+					bbs.setBbsContent(rs.getString("bbsContent"));
+					bbs.setFileName(rs.getString("fileName"));
+					bbs.setFileRealName(rs.getString("fileRealName"));
+					bbs.setFileName2(rs.getString("fileName2"));
+					bbs.setFileRealName2(rs.getString("fileRealName2"));
+					bbs.setBbsAvailable(rs.getInt("bbsAvailable"));
+					list.add(bbs);
 				}
 			} catch (Exception e) {
-				System.out.println("getNoticeAll err : " + e);
+				System.out.println("getBbsAll err : " + e);
 			} finally {
 				try {
 					if(rs!=null)rs.close();
@@ -134,6 +146,7 @@ public class noticeBbsDAO {
 					System.out.println("err : " + e2);
 				}
 			}
-			return list; //목록 반환
+			return list; // 목록 반환
 		}
+
 }

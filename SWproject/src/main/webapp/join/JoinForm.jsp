@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>회원가입 화면</title>
 <style>
-#wrap{padding-left: 900px;}
+#wrap{padding-left: 800px;}
 </style> 
  
 <link href='../../css/join_style.css' rel='stylesheet' style='text/css'/>

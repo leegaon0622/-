@@ -74,10 +74,13 @@
 	overflow:visible;
 	padding:0;
 }
+
 #nav ul li:hover a{
 	background:#eee;
 	font-weight:bold;
 }
+
+
 /*제일윗부분*/
 .wrapper{
 	margin : 0 auto;
@@ -178,12 +181,35 @@ padding-top:7px;
 	<br>
 
 	<ul id="nav">
-	<li><a href="#">카테고리+</a>
-		<ul>
-			<li><a href="#">기초 스킨케어</a></li>
-			<li><a href="#">메이크업</a></li>
-			<li><a href="#">바디케어</a></li>
-			<li><a href="#">미용소품</a></li>
+	<li><a href="">카테고리+</a>
+		<ul class="low">
+			<li><a href="">기초 스킨케어</a>			
+				<ul>
+					<li><a href="">스킨,로션</a></li>
+					<li><a href="">에센스,크림</a></li>
+					<li><a href="">클렌징</a></li>
+				</ul>
+			</li>
+			
+			<li><a href="">메이크업</a>
+				<ul>
+					<li><a href="">베이스</a></li>
+					<li><a href="">아이</a></li>
+					<li><a href="">립</a></li>
+				</ul>
+			</li>
+			<li><a href="">바디케어</a>
+				<ul>
+					<li><a href="">로션/크림</a></li>
+					<li><a href="">핸드/풋</a></li>
+				</ul>
+			</li>
+			<li><a href="">미용소품</a>
+				<ul>
+					<li><a href="">네일소품</a></li>
+					<li><a href="">페이스소품</a></li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 	<li><a href="#">랭킹</a></li>

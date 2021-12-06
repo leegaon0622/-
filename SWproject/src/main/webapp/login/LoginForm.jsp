@@ -9,7 +9,7 @@
 <style>
 table {
 	position:absolute;
-  	padding : 150px 950px;
+  	padding : 150px 800px;
 }
 button {
 	width:100%;
